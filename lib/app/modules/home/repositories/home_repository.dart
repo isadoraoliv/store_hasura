@@ -3,9 +3,9 @@ import 'package:hasura_connect/hasura_connect.dart';
 import 'package:store_hasura/app/modules/home/models/produto_model.dart';
 
 class HomeRepository extends Disposable {
-  final HasuraConnect _hasura_connect;
+  final HasuraConnect _hasuraConnect;
 
-  HomeRepository(this._hasura_connect);
+  HomeRepository(this._hasuraConnect);
 
   Future<List<ProdutoModel>> getProduto() async {
     var query = '''
@@ -23,7 +23,7 @@ class HomeRepository extends Disposable {
           }
         }''';
 
-    var snapshot = await _hasura_connect.query(query);
+    var snapshot = await _hasuraConnect.query(query);
 
     return ProdutoModel.fromJsonList(snapshot['data']["produto"] as List);
   }

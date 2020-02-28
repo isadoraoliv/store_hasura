@@ -1,17 +1,19 @@
 import 'dart:convert';
 
 class TipoCategoriaProdutoDto {
-  final List<Produto> tipoProduto;
-  final List<Produto> categoriaProduto;
+  final List<TipoCategoriaDto> tipoProduto;
+  final List<TipoCategoriaDto> categoriaProduto;
 
   TipoCategoriaProdutoDto({
     this.tipoProduto,
     this.categoriaProduto,
+    String descricao,
+    String id,
   });
 
   TipoCategoriaProdutoDto copyWith({
-    List<Produto> tipoProduto,
-    List<Produto> categoriaProduto,
+    List<TipoCategoriaDto> tipoProduto,
+    List<TipoCategoriaDto> categoriaProduto,
   }) =>
       TipoCategoriaProdutoDto(
         tipoProduto: tipoProduto ?? this.tipoProduto,
@@ -27,12 +29,12 @@ class TipoCategoriaProdutoDto {
       TipoCategoriaProdutoDto(
         tipoProduto: json["tipo_produto"] == null
             ? null
-            : List<Produto>.from(
-                json["tipo_produto"].map((x) => Produto.fromMap(x))),
+            : List<TipoCategoriaDto>.from(
+                json["tipo_produto"].map((x) => TipoCategoriaDto.fromMap(x))),
         categoriaProduto: json["categoria_produto"] == null
             ? null
-            : List<Produto>.from(
-                json["categoria_produto"].map((x) => Produto.fromMap(x))),
+            : List<TipoCategoriaDto>.from(json["categoria_produto"]
+                .map((x) => TipoCategoriaDto.fromMap(x))),
       );
 
   Map<String, dynamic> toMap() => {
@@ -54,29 +56,31 @@ class TipoCategoriaProdutoDto {
   }
 }
 
-class Produto {
+class TipoCategoriaDto {
   final String id;
   final String descricao;
 
-  Produto({
+  TipoCategoriaDto({
     this.id,
     this.descricao,
   });
 
-  Produto copyWith({
+  TipoCategoriaDto copyWith({
     String id,
     String descricao,
   }) =>
-      Produto(
+      TipoCategoriaDto(
         id: id ?? this.id,
         descricao: descricao ?? this.descricao,
       );
 
-  factory Produto.fromJson(String str) => Produto.fromMap(json.decode(str));
+  factory TipoCategoriaDto.fromJson(String str) =>
+      TipoCategoriaDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Produto.fromMap(Map<String, dynamic> json) => Produto(
+  factory TipoCategoriaDto.fromMap(Map<String, dynamic> json) =>
+      TipoCategoriaDto(
         id: json["id"] == null ? null : json["id"],
         descricao: json["descricao"] == null ? null : json["descricao"],
       );

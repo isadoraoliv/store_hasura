@@ -4,6 +4,11 @@ description: A new Flutter project.
 
 version: 1.0.0+1
 
+scripts:
+  get: flutter packages get
+  delete: flutter pub run build_runner build --delete-conflicting-outputs
+  runner: flutter pub run build_runner build
+
 environment:
   sdk: ">=2.1.0 <3.0.0"
 

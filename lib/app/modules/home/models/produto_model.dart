@@ -4,8 +4,8 @@ class ProdutoModel {
   final String id;
   final String nome;
   final int valor;
-  final TipoCategoriaDto tipoProduto;
-  final TipoCategoriaDto categoriaProduto;
+  final TipoOuCategoriaDto tipoProduto;
+  final TipoOuCategoriaDto categoriaProduto;
 
   ProdutoModel({
     this.id,
@@ -19,8 +19,8 @@ class ProdutoModel {
     String id,
     String nome,
     int valor,
-    TipoCategoriaDto tipoProduto,
-    TipoCategoriaDto categoriaProduto,
+    TipoOuCategoriaDto tipoProduto,
+    TipoOuCategoriaDto categoriaProduto,
   }) =>
       ProdutoModel(
         id: id ?? this.id,
@@ -41,10 +41,10 @@ class ProdutoModel {
         valor: json["valor"] == null ? null : json["valor"],
         tipoProduto: json["tipo_produto"] == null
             ? null
-            : TipoCategoriaDto.fromMap(json["tipo_produto"]),
+            : TipoOuCategoriaDto.fromMap(json["tipo_produto"]),
         categoriaProduto: json["categoria_produto"] == null
             ? null
-            : TipoCategoriaDto.fromMap(json["categoria_produto"]),
+            : TipoOuCategoriaDto.fromMap(json["categoria_produto"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -65,27 +65,27 @@ class ProdutoModel {
   }
 }
 
-class TipoCategoriaDto {
+class TipoOuCategoriaDto {
   final String descricao;
 
-  TipoCategoriaDto({
+  TipoOuCategoriaDto({
     this.descricao,
   });
 
-  TipoCategoriaDto copyWith({
+  TipoOuCategoriaDto copyWith({
     String descricao,
   }) =>
-      TipoCategoriaDto(
+      TipoOuCategoriaDto(
         descricao: descricao ?? this.descricao,
       );
 
-  factory TipoCategoriaDto.fromJson(String str) =>
-      TipoCategoriaDto.fromMap(json.decode(str));
+  factory TipoOuCategoriaDto.fromJson(String str) =>
+      TipoOuCategoriaDto.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory TipoCategoriaDto.fromMap(Map<String, dynamic> json) =>
-      TipoCategoriaDto(
+  factory TipoOuCategoriaDto.fromMap(Map<String, dynamic> json) =>
+      TipoOuCategoriaDto(
         descricao: json["descricao"] == null ? null : json["descricao"],
       );
 

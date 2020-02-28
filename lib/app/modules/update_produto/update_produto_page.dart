@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:store_hasura/app/modules/add_produto/models/tipo_categoria_produto_dto.dart';
+import 'package:store_hasura/app/modules/update_produto/update_produto_controller.dart';
+import 'package:store_hasura/app/modules/update_produto/update_produto_module.dart';
 import 'package:store_hasura/app/shared/custom_combobox/custom_combobox_widget.dart';
 import 'package:store_hasura/app/shared/widgets/label/label_widget.dart';
-import 'add_produto_controller.dart';
 
-class AddProdutoPage extends StatefulWidget {
+class UpdateProdutoPage extends StatefulWidget {
   final String title;
-  const AddProdutoPage({Key key, this.title = "Adicionar Produto"})
+  const UpdateProdutoPage({Key key, this.title = "UpdateProduto"})
       : super(key: key);
 
   @override
-  _AddProdutoPageState createState() => _AddProdutoPageState();
+  _UpdateProdutoPageState createState() => _UpdateProdutoPageState();
 }
 
-class _AddProdutoPageState
-    extends ModularState<AddProdutoPage, AddProdutoController> {
+class _UpdateProdutoPageState
+    extends ModularState<UpdateProdutoPage, UpdateProdutoController> {
+  var controller = UpdateProdutoModule.to.get<UpdateProdutoController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,8 +39,10 @@ class _AddProdutoPageState
               onChanged: controller.setDescricao,
               style: TextStyle(
                 color: Theme.of(context).primaryColor,
+              
               ),
               decoration: InputDecoration(
+                
                 hintText: "Descrição do produto:",
                 border: OutlineInputBorder(
                   borderSide: BorderSide(

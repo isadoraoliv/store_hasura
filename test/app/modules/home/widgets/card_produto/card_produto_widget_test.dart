@@ -5,7 +5,12 @@ import 'package:store_hasura/app/modules/home/widgets/card_produto/card_produto_
 
 main() {
   testWidgets('CardProdutoWidget has message', (WidgetTester tester) async {
-    await tester.pumpWidget(buildTestableWidget(CardProdutoWidget()));
+    await tester.pumpWidget(buildTestableWidget(CardProdutoWidget(
+      nomeProduto: null,
+      categoriaProduto: null,
+      tipoProduto: null,
+      valorProduto: null,
+    )));
     final textFinder = find.text('CardProduto');
     expect(textFinder, findsOneWidget);
   });

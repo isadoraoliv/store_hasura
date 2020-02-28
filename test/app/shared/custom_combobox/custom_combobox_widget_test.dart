@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_modular/flutter_modular_test.dart';
 
@@ -9,7 +8,7 @@ main() {
     await tester.pumpWidget(buildTestableWidget(CustomComboboxWidget(
       items: <Model>[],
       itemSelecionado: null,
-      onChanged: (Model) {},
+      onChanged: (Model item) {},
     )));
     final textFinder = find.text('CustomCombobox');
     expect(textFinder, findsOneWidget);
